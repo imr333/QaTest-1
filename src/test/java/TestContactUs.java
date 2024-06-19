@@ -19,23 +19,28 @@ public class TestContactUs {
 
     }
 
+    //В поля класса вынесены элементы селенида, чтобы можно было обращаться к ним из любых методов
+    SelenideElement FirstName = $("input[name='first_name']");
+    SelenideElement LastName = $("input[name='last_name']");
+    SelenideElement Email = $("input[name='email']");
+    SelenideElement Comments = $("textarea[placeholder='Comments']");
+
     @Test
-    void testForm() {
+    void testImput() {
+        //Открыть браузер
         open("/Contact-Us/contactus.html");
-
-        SelenideElement FirstName = $("input[name='first_name']");
-        SelenideElement LastName = $("input[name='last_name']");
-        SelenideElement Email = $("input[name='email']");
-        SelenideElement Comments = $("textarea[placeholder='Comments']");
-
-        //Проверка названия формы для заполнения
-        $(".section_header").shouldHave(text("CONTACT US"));
 
         //Заполнение формы
         FirstName.setValue("Suggar");
         LastName.setValue("Daddy");
         Email.setValue("keks@mail.com");
         Comments.setValue("Gena - crocodile");
+    }
+
+    @Test
+    void testForm() {
+        //Проверка названия формы для заполнения
+        $(".section_header").shouldHave(text("CONTACT US"));
 
         //Ресет полей
         $("#form_buttons > input[type*='reset']").click();
@@ -47,10 +52,7 @@ public class TestContactUs {
         Comments.shouldNotHave(text("Gena - crocodile"));
 
         //Повторное заполнение формы
-        FirstName.setValue("Suggar");
-        LastName.setValue("Daddy");
-        Email.setValue("keks@mail.com");
-        Comments.setValue("Gena - crocodile");
+        testImput();
 
         //Подтвердить заполнение
         $("#form_buttons > input[type='submit']").click();
