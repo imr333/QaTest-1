@@ -20,21 +20,21 @@ public class TestContactUs {
     }
 
     //В поля класса вынесены элементы селенида, чтобы можно было обращаться к ним из любых методов
-    SelenideElement FirstName = $("input[name='first_name']");
-    SelenideElement LastName = $("input[name='last_name']");
-    SelenideElement Email = $("input[name='email']");
-    SelenideElement Comments = $("textarea[placeholder='Comments']");
+    SelenideElement firstName = $("input[name='first_name']");
+    SelenideElement lastName = $("input[name='last_name']");
+    SelenideElement email = $("input[name='email']");
+    SelenideElement comments = $("textarea[placeholder='Comments']");
 
     @Test
-    void testImput() {
+    void fillForm() {
         //Открыть браузер
         open("/Contact-Us/contactus.html");
 
         //Заполнение формы
-        FirstName.setValue("Suggar");
-        LastName.setValue("Daddy");
-        Email.setValue("keks@mail.com");
-        Comments.setValue("Gena - crocodile");
+        firstName.setValue("Suggar");
+        lastName.setValue("Daddy");
+        email.setValue("keks@mail.com");
+        comments.setValue("Gena - crocodile");
     }
 
     @Test
@@ -43,16 +43,16 @@ public class TestContactUs {
         $(".section_header").shouldHave(text("CONTACT US"));
 
         //Ресет полей
-        $("#form_buttons > input[type*='reset']").click();
+        $("#form_buttons > input[type='reset']").click();
 
         //Убедиться что после ресета полей - значния полей пустые
-        FirstName.shouldNotHave(text("Suggar"));
-        LastName.shouldNotHave(text("Daddy"));
-        Email.shouldNotHave(text("keks@mail.com"));
-        Comments.shouldNotHave(text("Gena - crocodile"));
+        firstName.shouldNotHave(text("Suggar"));
+        lastName.shouldNotHave(text("Daddy"));
+        email.shouldNotHave(text("keks@mail.com"));
+        comments.shouldNotHave(text("Gena - crocodile"));
 
         //Повторное заполнение формы
-        testImput();
+        fillForm();
 
         //Подтвердить заполнение
         $("#form_buttons > input[type='submit']").click();
