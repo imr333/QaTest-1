@@ -25,11 +25,7 @@ public class TestContactUs {
     SelenideElement email = $("input[name='email']");
     SelenideElement comments = $("textarea[placeholder='Comments']");
 
-    @Test
     void fillForm() {
-        //Открыть браузер
-        open("/Contact-Us/contactus.html");
-
         //Заполнение формы
         firstName.setValue("Suggar");
         lastName.setValue("Daddy");
@@ -39,6 +35,9 @@ public class TestContactUs {
 
     @Test
     void testForm() {
+
+        open("/Contact-Us/contactus.html");
+
         //Проверка названия формы для заполнения
         $(".section_header").shouldHave(text("CONTACT US"));
 
