@@ -23,9 +23,9 @@ public class TestContactUs {
     void testForm() {
         open("/Contact-Us/contactus.html");
 
-        SelenideElement FirstName = $("input[name*='first_name']");
-        SelenideElement LastName = $("input[name*='last_name']");
-        SelenideElement Email = $("input[name*='email']");
+        SelenideElement FirstName = $("input[name='first_name']");
+        SelenideElement LastName = $("input[name='last_name']");
+        SelenideElement Email = $("input[name='email']");
         SelenideElement Comments = $("textarea[placeholder='Comments']");
 
         //Проверка названия формы для заполнения
@@ -53,10 +53,11 @@ public class TestContactUs {
         Comments.setValue("Gena - crocodile");
 
         //Подтвердить заполнение
-        $("#form_buttons > input[type*='submit']").click();
+        $("#form_buttons > input[type='submit']").click();
 
         //Переход на страницу подтверждения
         $("#contact_reply").shouldHave(text("Thank You for your Message!"));
+
     }
 
     @AfterAll
