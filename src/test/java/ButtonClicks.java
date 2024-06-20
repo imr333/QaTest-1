@@ -29,7 +29,7 @@ public class ButtonClicks {
         $x("//*[@class='modal-title']").shouldHave(text("Congratulations!"));
         $x("//*[@data-dismiss='modal']").click();
 
-        //Клик по кнопке №2 с помощью JS селектора с дальнейшим закрытием модального окна
+        //Клик по кнопке №2 с помощью JS с дальнейшим закрытием модального окна
         SelenideElement button2 = $("#button2");
         Selenide.executeJavaScript("arguments[0].click()", button2);
         SelenideElement close = $("#myModalJSClick > .modal-dialog > .modal-content > .modal-footer > .btn");
@@ -38,7 +38,7 @@ public class ButtonClicks {
 
         //Клик по кнопке №3 с предварительным наведением
         SelenideElement button3 = $("#button3");
-        actions().moveToElement(button3,10,10).click().perform(); //хелп, не могу тыкнуть по кнопке...
+        actions().moveToElement(button3,10,10).click().perform(); //хелп, не могу тыкнуть по кнопке... (как только не пробовал)
 
 
 
