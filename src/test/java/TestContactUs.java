@@ -41,6 +41,8 @@ public class TestContactUs {
         //Проверка названия формы для заполнения
         $(".section_header").shouldHave(text("CONTACT US"));
 
+        fillForm();
+
         //Ресет полей
         $("#form_buttons > input[type='reset']").click();
 
