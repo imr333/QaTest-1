@@ -21,7 +21,8 @@ public class ButtonClicks {
         Configuration.browserSize = ("1920x1080");
     }
 
-    //по хорошему нужно сделать две переменные на закрытие модалки и проверку хедера, но задача попробовать несколько вариантов взаимодействия с элементами:
+    /*по-хорошему нужно использовать две переменные на закрытие модалки и проверку хедера,
+    но задача попробовать несколько вариантов взаимодействия с элементами*/
     private final SelenideElement closeBtn = $(".fade.in.show .btn-default");
     private final SelenideElement modalTitle = $(".modal.fade.in.show .modal-header");
 
@@ -35,30 +36,29 @@ public class ButtonClicks {
     @Test
     void testButtonClick() {
 
-        //Клик по кнопке №1 с помощью xpath селектора, проверка модального окна и его закрытие
+        /*Клик по кнопке №1 с помощью xpath селектора, проверка модального окна и его закрытие*/
         $x("//*[@id='button1']").click();
         $x("//*[@class='modal-title']").shouldHave(text("Congratulations!"));
         $x("//*[@data-dismiss='modal']").click();
 
-        //Клик по кнопке №2 с помощью JS с дальнейшим закрытием модального окна
+        /*Клик по кнопке №2 с помощью JS с дальнейшим закрытием модального окна*/
         SelenideElement button2 = $("#button2");
         button2.click(ClickOptions.usingJavaScript()); // Selenide.executeJavaScript("arguments[0].click()", button2);
         modalTitle.shouldHave(text("Well I think it is....."));
         SelenideElement close = $("#myModalJSClick .modal-footer > .btn");
         close.click(ClickOptions.usingJavaScript()); // Selenide.executeJavaScript("arguments[0].click()", close);
-//
 
-        //Клик по кнопке №3 с помощью метода actions()
-        /*поскольку тестовый сайт забагован - исопльзовался клик с помощью JS*/
+        /*Клик по кнопке №3 с помощью метода actions()
+        поскольку тестовый сайт забагован - исопльзовался клик с помощью JS*/
         SelenideElement button3 = $("#button3");
         button3.click(ClickOptions.usingJavaScript());
-//        actions().moveToElement(button3).click(button3).perform(); //метод не работает из-за бага на сайте
+//        actions().moveToElement(button3).click(button3).perform();
         modalTitle.shouldHave(text("Action Move & Click"));
         closeBtn.shouldBe(visible).click(ClickOptions.usingJavaScript());
     }
 
     @AfterEach
-    public void tearDown(){
+    public void tearDown() {
         sleep(3000);
         closeWebDriver();
     }
