@@ -20,12 +20,6 @@ public class TestContactUs2 {
         closeWebDriver();
     }
 
-    /*значения для метода селенида seValue*/
-    String setFirstName;
-    String setLastName;
-    String setEmailAdress;
-    String setComments;
-
     /*переменные - локаторы*/
     SelenideElement inputFirstName = $("#contact_form > [placeholder='First Name']");
     SelenideElement inputLastName = $("#contact_form > [placeholder='Last Name']");
@@ -34,11 +28,6 @@ public class TestContactUs2 {
 
     /*метод на заполнение полей, включающий в себя значения полей в виде аргументов*/
     public void fillFormValues(String setFirstName, String setLastName, String setEmailAdress, String setComments) {
-
-        this.setFirstName = setFirstName;
-        this.setLastName = setLastName;
-        this.setEmailAdress = setEmailAdress;
-        this.setComments = setComments;
 
         inputFirstName.setValue(setFirstName);
         inputLastName.setValue(setLastName);
