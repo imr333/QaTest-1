@@ -40,17 +40,14 @@ public class ToDoList {
         $x("//li[text()=' TEST']").click();
     }
 
-    /*решил создать переменную - удаление строки*/
-    SelenideElement remove = $(".fa-trash");
-
-    /*затем метод удаления одной строки*/
-    void removePoint(){
-        remove.hover().click();
+    /*создал метод удаления одной строки*/
+    void removePoint() {
+        $(".fa-trash").hover().click();
     }
 
     /*затем метод с циклом, для удаления строк, кол-во которых указано в аргументах метода*/
-    void removeAllPoints(int number){
-        for(int i = 1; i < number; i++){
+    void removeAllPoints(int number) {
+        for (int i = 1; i < number; i++) {
             removePoint();
         }
     }
@@ -63,6 +60,5 @@ public class ToDoList {
         inputTextAndHidePoint("TEST");
         clickOnPoint();
         removeAllPoints(4);
-
     }
 }
