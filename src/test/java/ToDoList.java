@@ -1,4 +1,6 @@
+import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -52,7 +54,7 @@ public class ToDoList {
         }
     }
 
-    /*пока что тест норм не пашет, поскольку нужно найти как достучаться до элемента удаления строки (при запуске теста удаляется только 1 строка)*/
+    /*пока что тест норм не пашет. возможно потому что необходимо добавить таймаут после метода клика в методе removePoint (мб это как-то делается через clickOption*/
     @Test
     void addAndRemovePoints() {
         open("/To-Do-List/index.html");
