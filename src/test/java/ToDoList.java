@@ -42,7 +42,7 @@ public class ToDoList {
         $x("//li[text()=' TEST']").click();
     }
 
-    /*создал метод удаления одной строки*/
+    /*создал метод удаления одной строки. добавлена пауза после клика с помощью sleep*/
     void removePoint() {
         $(".fa-trash").hover().click();
         sleep(1000);
@@ -55,7 +55,6 @@ public class ToDoList {
         }
     }
 
-    /*пока что тест норм не пашет. возможно потому что необходимо добавить таймаут после метода клика в методе removePoint (мб это как-то делается через clickOption*/
     @Test
     void addAndRemovePoints() {
         open("/To-Do-List/index.html");
