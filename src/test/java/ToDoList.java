@@ -26,7 +26,7 @@ public class ToDoList {
     }
 
     /*метод ввода значения в поле с дальнейшим скрытием строки*/
-    void inputTextAndHidePoint(String text) {
+    void inputTextAndHide(String text) {
         $("input[type='text']").setValue(text).pressEnter();
         $("#plus-icon").click();
         $("input[placeholder='Add new todo']").shouldNotBe(visible);
@@ -59,7 +59,7 @@ public class ToDoList {
     void addAndRemovePoints() {
         open("/To-Do-List/index.html");
 
-        inputTextAndHidePoint("TEST");
+        inputTextAndHide("TEST");
         clickOnPoint();
         removeAllPoints(4);
     }
