@@ -45,11 +45,12 @@ public class ToDoList {
     /*создал метод удаления одной строки*/
     void removePoint() {
         $(".fa-trash").hover().click();
+        sleep(1000);
     }
 
     /*затем метод с циклом, для удаления строк, кол-во которых указано в аргументах метода*/
     void removeAllPoints(int number) {
-        for (int i = 1; i < number; i++) {
+        for (int i = 1; i <= number; i++) {
             removePoint();
         }
     }
